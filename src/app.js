@@ -1,47 +1,45 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
-  StyleSheet,
   Text,
   View
 } from 'react-native';
 
-export default class D3ART extends Component {
+import Pie from './charts/Pie';
+
+import data from './data/data';
+
+export default class App extends Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      activeIndex: 0,
+      spendingsPerYear: data.spendingsPerYear
+    }
+  }
+
   render() {
+    const { container, chartTitle } = styles
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started,  index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
+      <View style={container}>
+        <Text style={chartTitle}>Distribution of spending this month</Text>
       </View>
     );
   }
 }
 
-const styles = StyleSheet.create({
+
+const styles = {
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#FFF',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
-
-AppRegistry.registerComponent('D3ART', () => D3ART);
+  chartTitle: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    textAlign: 'center'
+  }
+}
